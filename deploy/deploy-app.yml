@@ -1,0 +1,34 @@
+---
+-   name: Deploy application using docker
+    hosts: football-manager-telegram-bot
+    remote_user: root
+    become: true
+    vars_files:
+      - ["vars/credentials.yml"]
+      - ["vars/main.yml"]
+    tasks:
+      - name: Log into DockerHub
+        docker_login:
+          username: "{{docker_registry_username}}"
+          password: "{{docker_registry_password}}"
+          email: "{{docker_registry_email}}"
+
+      - name: pull bot docker image
+        docker_image:
+          state: present
+          force: yes
+          name: "ivanko5417/football-manager-telegram-bot:{{ docker_tag }}"
+
+      - name: run bot container
+        docker_container:
+           name: "bot"
+           image: "ivanko5417/football-manager-telegram-bot:{{ docker_tag }}"
+           state: started
+           restart_policy: always
+           links:
+             - mongo
+           published_ports:
+             - "127.0.0.1:{{ item }}:3010"
+           env:
+             NODE_ENV: "{{ env }}"
+        with_items: "{{ bot_ports }}"

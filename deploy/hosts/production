@@ -1,0 +1,2 @@
+football-manager-telegram-bot ansible_ssh_host=142.93.106.118 ansible_user=root
+localhost ansible_connection=local

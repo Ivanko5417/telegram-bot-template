@@ -1,0 +1,5 @@
+app_name: "football-manager-telegram-bot"
+app_home: "/home/{{app_name}}"
+mongo_data_dir: "/home/{{app_name}}/mongo-data" # same as for pa until on one server
+
+bot_ports: [ 3010 ]

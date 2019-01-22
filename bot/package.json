@@ -1,0 +1,19 @@
+{
+  "name": "telegram-football-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "NODE_ENV=production NTBA_FIX_319=any-value node src/index.js",
+    "dev": "nodemon ./index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  },
+  "dependencies": {
+    "app-module-path": "^2.2.0",
+    "koa": "^2.6.2",
+    "mongoose": "5.4.0",
+    "telegraf": "3.25.5"
+  }
+}
