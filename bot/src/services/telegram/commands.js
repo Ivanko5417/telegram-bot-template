@@ -1,4 +1,4 @@
-const bot = require('services/telegramBot');
+const bot = require('./bot');
 const userService = require('resources/user/user.service');
 const chatService = require('resources/chat/chat.service');
 
